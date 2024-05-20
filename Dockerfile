@@ -11,8 +11,5 @@ curl
 # Copy the script.sh file from this location to /usr/src/app/ creating /usr/src/app/script.sh.
 COPY script.sh .
 
-# Execute a command with `/bin/sh -c` prefix.
-RUN touch additional.txt
-
-# When running Docker run the command will be ./script.sh
+# When running Docker run the command ./script.sh
 CMD ./script.sh
