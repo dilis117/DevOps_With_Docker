@@ -10,5 +10,3 @@ Test itself is only one line printing to console (log to console.
 
 1. Pull the image using <docker pull laurilp/example-rf>
 2. Run image using <docker run laurilp/example-rf>
-3. 
-[Contribution guidelines for this project](Exercise1.15 Homework/example-rf.md)
