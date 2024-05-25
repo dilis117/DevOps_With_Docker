@@ -1,0 +1,7 @@
+Front commands:
+docker build . -t example-frontend
+docker run -d -p 5000:5000 --name frontend example-frontend
+
+Backend commands:
+docker build . -t example-backend
+docker run -d -p 8080:8080 --name backend example-backend
