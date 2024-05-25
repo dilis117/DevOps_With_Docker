@@ -1,2 +1,0 @@
-Docker hub link: 
-https://hub.docker.com/repository/docker/laurilp/example-rf/general
