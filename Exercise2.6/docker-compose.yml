@@ -1,0 +1,36 @@
+services:
+    frontend:
+        container_name: frontend
+        build: ./frontend
+        depends_on:
+            - backend
+        image: example-frontend
+        ports:
+          - 5000:5000
+    backend:
+        container_name: backend
+        build: ./backend
+        environment:
+            REDIS_HOST: redis
+            POSTGRES_HOST: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DATABASE: postgres
+        depends_on:
+            - redis
+            - postgres
+        image: example-backend
+        ports:
+          - 8080:8080
+    redis:
+        container_name: redis_cache
+        image: redis
+        restart: unless-stopped
+    postgres:
+        container_name: postgres
+        image: postgres
+        environment:
+            POSTGRES_HOST: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DATABASE: postgres
