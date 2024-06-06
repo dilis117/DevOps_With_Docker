@@ -1,0 +1,40 @@
+services:
+    example-frontend:
+        image: example-frontend
+        container_name: example-frontend
+        build: ../example-frontend/.
+    example-backend:
+        image: example-backend
+        container_name: example-backend
+        build: ../example-backend/.
+        environment:
+            REDIS_HOST: redis
+            POSTGRES_HOST: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DATABASE: postgres
+            REQUEST_ORIGIN: http://localhost:80
+        depends_on:
+            - redis
+            - postgres
+
+    redis:
+        container_name: redis_cache
+        image: redis
+        restart: unless-stopped
+
+    postgres:
+        container_name: postgres
+        image: postgres
+        environment:
+            POSTGRES_HOST: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DATABASE: postgres
+    nginx:
+        container_name: nginx
+        image: nginx
+        ports:
+          - 8080:80
+        volumes:
+          - ./nginx.conf:/etc/nginx/nginx.conf
